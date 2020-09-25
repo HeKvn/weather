@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鲲池天气查询</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 输入搜索 -->
+        <div style="display: flex;">
+            <input type="text" @keyup.enter="searchWeather" v-model="city">
+            <button @click="searchWeather">搜索</button>
+        </div>
+        <!-- 点击文字搜索区域 -->
+        <div>
+            <a href="#" @click="changeCity('北京')">北京</a>
+            <a href="#" @click="changeCity('上海')">上海</a>
+            <a href="#" @click="changeCity('广州')">广州</a>
+            <a href="#" @click="changeCity('深圳')">深圳</a>
+        </div>
+        <!-- 展示区域 -->
+        <div>
+            <ul style="display: flex; list-style: none;">
+                <li v-for="item in weather" style="margin: 10px 20px;">
+                    <div style="width: 80px;">
+                        <h2>{{item.type}}</h2>
+                    </div>
+                    <div>
+                        <b>{{item.low}}</b>
+                        ~
+                        <b>{{item.high}}</b>
+                    </div>
+                    <div>
+                        <span>{{item.date}}</span>
+                    </div>
+                    <div>
+                        <span>{{item.fengxiang}}</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- 导入自己的js -->
+    <script src="./main.js"></script>
+</body>
+</html>

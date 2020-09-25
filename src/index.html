@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .search_moudle{display: flex;}
+        .keyWord_search a{text-decoration: none;}
+        .showArea ul{display: flex; list-style: none;}
+        .showArea ul li{margin: 10px 20px;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 输入搜索 -->
+        <div class="search_moudle">
+            <input type="text" @keyup.enter="searchWeather" v-model="city">
+            <button @click="searchWeather">搜索</button>
+        </div>
+        <!-- 点击文字搜索区域 -->
+        <div class="keyWord_search">
+            <a href="#" @click="changeCity('北京')">北京</a>
+            <a href="#" @click="changeCity('上海')">上海</a>
+            <a href="#" @click="changeCity('广州')">广州</a>
+            <a href="#" @click="changeCity('深圳')">深圳</a>
+        </div>
+        <!-- 展示区域 -->
+        <div class="showArea">
+            <ul>
+                <li v-for="item in weather">
+                    <div style="width: 80px;">
+                        <h2>{{item.type}}</h2>
+                    </div>
+                    <div>
+                        <b>{{item.low}}</b>
+                        ~
+                        <b>{{item.high}}</b>
+                    </div>
+                    <div>
+                        <span>{{item.date}}</span>
+                    </div>
+                    <div>
+                        <span>{{item.fengxiang}}</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- 导入自己的js -->
+    <script src="./index.js"></script>
+</body>
+</html>
