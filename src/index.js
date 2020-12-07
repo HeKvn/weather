@@ -9,7 +9,23 @@ var app = new Vue({
             const that = this
             // console.log('天气查询')
             // console.log(this.city)
-            axios.get('http://wthrcdn.etouch.cn/weather_mini?city='+this.city)
+
+            //--------------(url传参)
+            // axios.get('http://wthrcdn.etouch.cn/weather_mini?city='+this.city)
+            // .then(function(respone){
+            //     // console.log(respone.data.data.forecast)
+            //     that.weather = respone.data.data.forecast
+            // })
+            // .catch(function(err){
+            //     console.log(err)
+            // })
+            
+            //-------------(params传参)
+            axios.get('http://wthrcdn.etouch.cn/weather_mini',{
+                params:{
+                    city:that.city
+                }
+            })
             .then(function(respone){
                 // console.log(respone.data.data.forecast)
                 that.weather = respone.data.data.forecast
